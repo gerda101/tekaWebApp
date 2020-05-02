@@ -16,10 +16,6 @@ const CustomerSchema = new mongoose.Schema({
         type: String,
         minlength:1,
     },
-    _customerId:{
-        type: mongoose.Types.ObjectId,
-        required: true
-    }
 })
 
 const Customer = mongoose.model('Customer', CustomerSchema);

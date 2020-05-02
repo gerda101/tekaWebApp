@@ -3,15 +3,16 @@ const mongoose = require('mongoose');
 const {Media} = require('./media.model');
 const {Customer} = require('./customer.model');
 
-/*
 const RentSchema = new mongoose.Schema({
     customer: {
-        type: Customer.name,
-        required: true
+        type: mongoose.Types.ObjectId,
+        required: true,
+        ref: 'Customer'
     },
     media: {
-        type: Media.name,
-        required: true
+        type: mongoose.Types.ObjectId,
+        required: true,
+        ref: 'Media'
     },
     rentDate: {
         type: Date,
@@ -36,4 +37,4 @@ const RentSchema = new mongoose.Schema({
 
 const Rent = mongoose.model('Rent', RentSchema);
 
-module.exports = {Rent};*/
+module.exports = {Rent};

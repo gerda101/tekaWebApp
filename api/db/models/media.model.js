@@ -22,10 +22,6 @@ const MediaSchema = new mongoose.Schema({
         enum: ['avaliable', 'unavaliable'],
         required: true,
     },
-    _mediaId:{
-        type: mongoose.Types.ObjectId,
-        required: true
-    }
 })
 
 const Media = mongoose.model('Media', MediaSchema);

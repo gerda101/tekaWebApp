@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const {mongoose} = require('./db/mongoose')
 
 //Mongoose modules load from index.js
-const {List, Media, Customer, Rent} = require('./db/models');
+const { Media, Customer, Rent} = require('./db/models');
 
 //middleware load
 app.use(bodyParser.json());
@@ -16,44 +16,7 @@ app.listen(3000, () =>{
 });
 
 //Routing
-//Lists
-app.get('/lists', (req, res) =>{
-    //array return
-    List.find({}).then((list) =>{
-        res.send(list);
-    })
-});
-
-app.post('/lists', (req, res) =>{
-    //new list and return
-    let title = req.body.title;
-
-    let newList = new List({
-        title
-    });
-    newList.save().then((listDoc) =>{
-        res.send(listDoc);
-    })
-});
-
-app.patch('/lists/:id', (req, res) =>{
-    //update and return
-    List.findOneAndUpdate({_id: req.params.id}, {
-        $set: req.body
-    }).then(() =>{
-        res.sendStatus(200);
-    });
-});
-
-app.delete('/lists/:id', (req, res) =>{
-    //delete and return
-    List.findOneAndRemove({_id: req.params.id}).then((removedListDoc) =>{
-        res.send(removedListDoc);
-    });
-});
-
 //Media
-
 app.get('/media', (req, res) =>{
     //array return
     Media.find({}).then((media) =>{
@@ -95,16 +58,15 @@ app.delete('/media/:id', (req, res) =>{
     });
 });
 
-//Customer
-
-app.get('/customer', (req, res) =>{
+//Customers
+app.get('/customers', (req, res) =>{
     //array return
     Customer.find({}).then((customer) =>{
         res.send(customer);
     })
 });
 
-app.post('/customer', (req, res) =>{
+app.post('/customers', (req, res) =>{
     //new list and return
     let name = req.body.name;
     let phone = req.body.phone;
@@ -120,7 +82,7 @@ app.post('/customer', (req, res) =>{
     })
 });
 
-app.patch('/customer/:id', (req, res) =>{
+app.patch('/customers/:id', (req, res) =>{
     //update and return
     Customer.findOneAndUpdate({_id: req.params.id}, {
         $set: req.body
@@ -129,9 +91,53 @@ app.patch('/customer/:id', (req, res) =>{
     });
 });
 
-app.delete('/customer/:id', (req, res) =>{
+app.delete('/customers/:id', (req, res) =>{
     //delete and return
     Customer.findOneAndRemove({_id: req.params.id}).then((removedCustomerDoc) =>{
         res.send(removedCustomerDoc);
+    });
+});
+
+//Rents
+app.get('/rent', (req, res) =>{
+    //array return
+    Rent.find({}).then((rent) =>{
+        res.send(rent);
+    })
+});
+
+app.post('/rent', (req, res) =>{
+    //new list and return
+    let customer = req.body.customer;
+    let media = req.body.media;
+    let rentDate = req.body.rentDate;
+    let dueDate = req.body.dueDate;
+    let status = req.body.status;
+
+    let newCustomer = new Customer({
+        customer,
+        media,
+        rentDate,
+        dueDate,
+        status
+    });
+    newRent.save().then((listRent) =>{
+        res.send(listRent);
+    })
+});
+
+app.patch('/rent/:id', (req, res) =>{
+    //update and return
+    Rent.findOneAndUpdate({_id: req.params.id}, {
+        $set: req.body
+    }).then(() =>{
+        res.sendStatus(200);
+    });
+});
+
+app.delete('/rent/:id', (req, res) =>{
+    //delete and return
+    Rent.findOneAndRemove({_id: req.params.id}).then((removedRentDoc) =>{
+        res.send(removedRentDoc);
     });
 });
