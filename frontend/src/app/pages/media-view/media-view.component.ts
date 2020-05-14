@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {MediaService} from "../../media.service";
 
 @Component({
-  selector: 'app-task-view',
+  selector: 'app-view',
   templateUrl: './media-view.component.html',
   styleUrls: ['./media-view.component.scss']
 })

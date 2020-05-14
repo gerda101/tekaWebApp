@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {RentService} from "../../rent.service";
 
 @Component({
-  selector: 'app-task-view',
+  selector: 'app-view',
   templateUrl: './rent-view.component.html',
   styleUrls: ['./rent-view.component.scss']
 })

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {CustomerService} from "../../customer.service";
 
 @Component({
-  selector: 'app-task-view',
+  selector: 'app-view',
   templateUrl: './customer-view.component.html',
   styleUrls: ['./customer-view.component.scss']
 })
