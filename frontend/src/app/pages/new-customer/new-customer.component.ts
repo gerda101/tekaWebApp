@@ -14,7 +14,6 @@ export class NewCustomerComponent implements OnInit {
   }
 
   createCustomer(name: string, phone: number, address: string){
-    console.log(phone.toString().length);
     if (phone.toString().length===10 || phone.toString().length===11) {
       this.customerService.createCustomer(name, phone, address).subscribe((response: any) =>{
         console.log(response);

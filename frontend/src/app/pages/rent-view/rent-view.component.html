@@ -9,34 +9,32 @@
         <a class="list-menu-item" routerLink="/media">
           <p>Media</p>
         </a>
-        <a class="list-menu-item is-active">
+        <a class="list-menu-item" routerLink="/customer">
           <p>Customers</p>
         </a>
-        <a class="list-menu-item" routerLink="/rent">
+        <a class="list-menu-item is-active">
           <p>Renting</p>
         </a>
       </div>
 
-      <button class="button has-text-light has-background-grey-light" style="width: 200px" routerLink="/new-customer"> + New customer</button>
+      <button class="button has-text-light has-background-grey-light" style="width: 200px" routerLink="/new-rent"> + New rent</button>
 
     </div>
 
     <div class="list-container has-background-white">
       <div class="contenttable">
         <table width="100%">
-          <th width="30%">Name</th>
-          <th width="30%">Phone Number</th>
-          <th>Address</th>
+          <th width="30%">Customer</th>
+          <th width="30%">Media</th>
+          <th width="10%">Rent Date</th>
+          <th width="10%">Due Date</th>
+          <th>Status</th>
 
-          <tr *ngFor="let customer of customer">
-            <td>{{customer.name}}</td>
-            <td>{{customer.phone}}</td>
-            <td>{{customer.address}}</td>
-          </tr>
         </table>
       </div>
     </div>
 
   </div>
 </div>
+
 

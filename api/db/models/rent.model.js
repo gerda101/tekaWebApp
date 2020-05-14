@@ -1,8 +1,5 @@
 const mongoose = require('mongoose');
 
-const {Media} = require('./media.model');
-const {Customer} = require('./customer.model');
-
 const RentSchema = new mongoose.Schema({
     customer: {
         type: mongoose.Types.ObjectId,
@@ -26,13 +23,9 @@ const RentSchema = new mongoose.Schema({
     },
     status: {
         type: String,
-        enum: ['in progress', 'overdue', 'returned'],
+        //enum: ['ongoing', 'overdue', 'returned'],
         required: true
     },
-    _rentId:{
-        type: mongoose.Types.ObjectId,
-        required: true
-    }
 })
 
 const Rent = mongoose.model('Rent', RentSchema);

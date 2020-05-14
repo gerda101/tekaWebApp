@@ -10,6 +10,8 @@ import { NewMediaComponent } from './pages/new-media/new-media.component';
 import { HomeComponent } from './pages/home/home.component';
 import { CustomerViewComponent } from './pages/customer-view/customer-view.component';
 import { NewCustomerComponent } from './pages/new-customer/new-customer.component';
+import { RentViewComponent } from './pages/rent-view/rent-view.component';
+import { NewRentComponent } from './pages/new-rent/new-rent.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { NewCustomerComponent } from './pages/new-customer/new-customer.componen
     NewMediaComponent,
     HomeComponent,
     CustomerViewComponent,
-    NewCustomerComponent
+    NewCustomerComponent,
+    RentViewComponent,
+    NewRentComponent
   ],
   imports: [
     BrowserModule,
