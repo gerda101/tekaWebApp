@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { HandlerService } from './handler.service';
+import { WebRequestService } from './web-request.service';
 
-describe('HandlerService', () => {
-  let service: HandlerService;
+describe('WebRequestService', () => {
+  let service: WebRequestService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(HandlerService);
+    service = TestBed.inject(WebRequestService);
   });
 
   it('should be created', () => {

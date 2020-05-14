@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 
+const AVALIABILTY =["avaliable", "unavaliable"];
+
 const MediaSchema = new mongoose.Schema({
     title: {
         type: String,
@@ -19,7 +21,7 @@ const MediaSchema = new mongoose.Schema({
     },
     mediaStatus: {
         type: String,
-        enum: ['avaliable', 'unavaliable'],
+        enum: AVALIABILTY,
         required: true,
     },
 })

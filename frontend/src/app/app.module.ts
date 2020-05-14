@@ -5,14 +5,19 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MediaViewComponent } from './pages/media-view/media-view.component';
 
+import {HttpClientModule} from "@angular/common/http";
+import { NewMediaComponent } from './pages/new-media/new-media.component';
+
 @NgModule({
   declarations: [
     AppComponent,
-    MediaViewComponent
+    MediaViewComponent,
+    NewMediaComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -17,24 +17,29 @@
         </a>
       </div>
 
-      <button class="button has-text-light has-background-grey-light"> + New media</button>
+      <button class="button has-text-light has-background-grey-light" (click)="createNewMedia()"> + New media</button>
 
     </div>
 
     <div class="list-container has-background-white">
-      <h1 class="title">
-        Requested list
-      </h1>
-
-        <a class="listing">
-          <p>Media</p>
-        </a>
-        <a class="listing">
-          <p>Customers</p>
-        </a>
-        <a class="listing">
-          <p>Renting</p>
-        </a>
+      <table class="contenttable">
+          <th width="40%">Title</th>
+          <th width="10%">Type</th>
+          <th width="20%">Duration</th>
+          <th>Status</th>
+        <tr>
+          <td>Test1</td>
+          <td>DVD</td>
+          <td>50</td>
+          <td>avaliable</td>
+        </tr>
+        <tr>
+          <td>Test2</td>
+          <td>VHS</td>
+          <td>60</td>
+          <td>avaliable</td>
+        </tr>
+      </table>
     </div>
 
   </div>

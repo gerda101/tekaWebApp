@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {MediaService} from "../../media.service";
 
 @Component({
   selector: 'app-task-view',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MediaViewComponent implements OnInit {
 
-  constructor() { }
+  constructor(private mediaService: MediaService) { }
 
   ngOnInit(): void {
+  }
+
+  createNewMedia(){
+    this.mediaService.createMedia('test title', 'DVD', 80, 'avaliable').subscribe((response: any) =>{
+      console.log(response);
+    });
+
   }
 
 }

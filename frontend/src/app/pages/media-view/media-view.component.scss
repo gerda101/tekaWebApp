@@ -63,21 +63,30 @@
   }
 }
 
-
-.listing{
+.contenttable{
   background: aliceblue;
   color: dimgrey;
-  padding: 10px 25px;
+  padding: 10px;
   border-radius: 10px;
   margin-top: 10px;
+  overflow-y: auto;
+  border-collapse: collapse;
+}
 
-  transition: box-shadow 0.2s ease;
+th {
+  background-color: steelblue;
+  padding: 10px;
+  cursor: default;
+}
+
+td{padding: 12px};
+
+tr {
   cursor: pointer;
-
-  &:hover{
+  &:hover {
+    border-radius: 10px;
     box-shadow: 0 0 0 3px #eeeeee;
   }
-
   &:active{
     transform: scale(0.95);
   }
