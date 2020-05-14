@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
 
-const AVALIABILTY =["avaliable", "unavaliable"];
-
 const MediaSchema = new mongoose.Schema({
     title: {
         type: String,
@@ -11,7 +9,7 @@ const MediaSchema = new mongoose.Schema({
     },
     mediaType: {
         type: String,
-        enum: ['DVD', 'VHS'],
+        /*enum: ["DVD", "VHS"],*/
         required: true,
     },
     duration: {
@@ -21,7 +19,7 @@ const MediaSchema = new mongoose.Schema({
     },
     mediaStatus: {
         type: String,
-        enum: AVALIABILTY,
+        /*enum: ["AVALIABLE", "UNAVALIABLE"],*/
         required: true,
     },
 })

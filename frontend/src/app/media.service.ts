@@ -11,4 +11,8 @@ export class MediaService {
   createMedia(title: string, mediaType: string, duration: number, mediaStatus='avaliable'){
     return this.webRequestService.post('media', { title, mediaType, duration , mediaStatus});
   }
+
+  getMedia() {
+    return this.webRequestService.get('media');
+  }
 }
