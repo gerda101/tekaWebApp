@@ -1,0 +1,20 @@
+@import "../../../main-styles.scss";
+
+.home-container{
+  padding: 36px;
+  border-bottom-right-radius: 15px;
+  border-top-right-radius: 15px;
+  overflow: scroll;
+}
+
+.clearfix {
+  overflow: auto;
+  padding: 20px;
+}
+
+.imagestyle{
+  float: left;
+  padding-left: 20px;
+  max-height: 70%;
+  width: 60%;
+}

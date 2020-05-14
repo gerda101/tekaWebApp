@@ -1,0 +1,42 @@
+<div class="centered-content">
+  <div class="container">
+
+    <div class="sidebar has-background-grey-lighter">
+      <div class="list-menu">
+        <a class="list-menu-item" routerLink="">
+          <p>Homepage</p>
+        </a>
+        <a class="list-menu-item" routerLink="/media">
+          <p>Media</p>
+        </a>
+        <a class="list-menu-item is-active">
+          <p>Customers</p>
+        </a>
+        <a class="list-menu-item">
+          <p>Renting</p>
+        </a>
+      </div>
+
+      <button class="button has-text-light has-background-grey-light" style="width: 200px" routerLink="/new-customer"> + New customer</button>
+
+    </div>
+
+    <div class="list-container has-background-white">
+      <div class="contenttable">
+        <table width="100%">
+          <th width="30%">Name</th>
+          <th width="30%">Phone Number</th>
+          <th>Address</th>
+
+          <tr *ngFor="let customer of customer">
+            <td>{{customer.name}}</td>
+            <td>{{customer.phone}}</td>
+            <td>{{customer.address}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+

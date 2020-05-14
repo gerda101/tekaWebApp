@@ -9,8 +9,8 @@ const CustomerSchema = new mongoose.Schema({
     },
     phone: {
         type: Number,
-        minlength: 6,
-        maxlength: 7,
+        minlength: 11,
+        maxlength: 12,
     },
     address: {
         type: String,

@@ -13,6 +13,7 @@ app.use(bodyParser.json());
 // CORS HEADERS MIDDLEWARE
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", "GET, POST, PATCH, PUT, DELETE, OPTIONS");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
@@ -66,14 +67,14 @@ app.delete('/media/:id', (req, res) =>{
 });
 
 //Customers
-app.get('/customers', (req, res) =>{
+app.get('/customer', (req, res) =>{
     //array return
     Customer.find({}).then((customer) =>{
         res.send(customer);
     })
 });
 
-app.post('/customers', (req, res) =>{
+app.post('/customer', (req, res) =>{
     //new list and return
     let name = req.body.name;
     let phone = req.body.phone;
@@ -89,7 +90,7 @@ app.post('/customers', (req, res) =>{
     })
 });
 
-app.patch('/customers/:id', (req, res) =>{
+app.patch('/customer/:id', (req, res) =>{
     //update and return
     Customer.findOneAndUpdate({_id: req.params.id}, {
         $set: req.body
@@ -98,7 +99,7 @@ app.patch('/customers/:id', (req, res) =>{
     });
 });
 
-app.delete('/customers/:id', (req, res) =>{
+app.delete('/customer/:id', (req, res) =>{
     //delete and return
     Customer.findOneAndRemove({_id: req.params.id}).then((removedCustomerDoc) =>{
         res.send(removedCustomerDoc);

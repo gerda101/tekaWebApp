@@ -7,12 +7,18 @@ import { MediaViewComponent } from './pages/media-view/media-view.component';
 
 import {HttpClientModule} from "@angular/common/http";
 import { NewMediaComponent } from './pages/new-media/new-media.component';
+import { HomeComponent } from './pages/home/home.component';
+import { CustomerViewComponent } from './pages/customer-view/customer-view.component';
+import { NewCustomerComponent } from './pages/new-customer/new-customer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MediaViewComponent,
-    NewMediaComponent
+    NewMediaComponent,
+    HomeComponent,
+    CustomerViewComponent,
+    NewCustomerComponent
   ],
   imports: [
     BrowserModule,
