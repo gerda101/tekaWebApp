@@ -1,5 +1,13 @@
 @import "../../../main-styles.scss";
 
+.subtitle{
+  font-family: 'Bayon';
+  font-size: large;
+  letter-spacing: 1px;
+  color: steelblue;
+  padding-left: 30px;
+}
+
 .leftside {
   display: flex;
   flex-direction: column;

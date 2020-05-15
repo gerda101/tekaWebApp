@@ -34,10 +34,8 @@ export class NewRentComponent implements OnInit {
 
   createRent() {
 
-    var media;
-    //media = this.customerCheckBox();
-    var customer;
-    //customer = this.mediaCheckBox();
+    var media = this.customerCheckBox();
+    var customer = this.mediaCheckBox();
 
     this.rentService.createRent(customer, media, this.d.toDateString(), this.dued.toDateString(), status = "ONGOING").subscribe((response: any) => {
       console.log(response);
@@ -49,8 +47,8 @@ export class NewRentComponent implements OnInit {
     });
   }
 
-  /*mediaCheckBox() {
-    var rows = ('mediatable').find('tr').length
+  mediaCheckBox() {
+    var rows = document.getElementById("mediatable")[0].rows;
     var checked = 0;
     var media = null;
 
@@ -70,7 +68,7 @@ export class NewRentComponent implements OnInit {
   }
 
   customerCheckBox() {
-    var rows = ('custable').find('tr').length
+    var rows = document.getElementById("custable")[0].rows;
     var checked = 0;
     var customer = null;
 
@@ -87,6 +85,6 @@ export class NewRentComponent implements OnInit {
       window.alert("No, or not 1 media selected!");
       return customer;
     }
-  }*/
+  }
 
 }
