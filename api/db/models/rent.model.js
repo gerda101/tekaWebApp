@@ -13,12 +13,10 @@ const RentSchema = new mongoose.Schema({
     },
     rentDate: {
         type: Date,
-        default: Date.now(),
         required: true
     },
     dueDate: {
         type: Date,
-        min: Date.now(),
         required: true
     },
     status: {

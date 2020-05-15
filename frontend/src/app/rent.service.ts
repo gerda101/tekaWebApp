@@ -8,9 +8,9 @@ import {MediaService} from "./media.service";
 })
 export class RentService {
 
-  constructor(private webRequestService: WebRequestService) { }
+  constructor(private webRequestService: WebRequestService, private customerService: CustomerService, private mediaService: MediaService) { }
 
-  createRent(customer: CustomerService, media: MediaService, rentDate: number, dueDate: number, status: string){
+  createRent(customer: string, media: string, rentDate: string, dueDate: string, status: string){
     return this.webRequestService.post('rent', { customer, media, rentDate, dueDate, status});
   }
 

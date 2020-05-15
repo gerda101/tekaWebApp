@@ -15,7 +15,7 @@ export class NewMediaComponent implements OnInit {
 
   createMedia(title: string, mediaType: string, duration: number){
     if (mediaType === "DVD" || mediaType ==="VHS") {
-      this.mediaService.createMedia(title, mediaType, duration, "avaliable").subscribe((response: any) =>{
+      this.mediaService.createMedia(title, mediaType, duration, "AVALIABLE").subscribe((response: any) =>{
         console.log(response);
         window.alert("New media added!");
         window.location.reload();
