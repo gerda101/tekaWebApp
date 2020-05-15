@@ -28,15 +28,33 @@
           <th width="30%">Phone Number</th>
           <th>Address</th>
 
-          <tr *ngFor="let customer of customer">
+          <tr *ngFor="let customer of customer" [routerLink]="['/customer', customer._id]">
             <td>{{customer.name}}</td>
             <td>{{customer.phone}}</td>
             <td>{{customer.address}}</td>
           </tr>
         </table>
-      </div>
-    </div>
+      </div><br>
 
+      <div class="dropdown is-hoverable is-pulled-right">
+        <div class="dropdown-trigger">
+          <button class="button has-background-grey-lighter" aria-haspopup="true" aria-controls="dropdown-menu4">
+            <span> Modify </span>
+          </button>
+        </div>
+        <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+          <div class="dropdown-content">
+            <a [routerLink]="['/edit-customer', customerId]" class="dropdown-item">
+              Edit
+            </a>
+            <a (click)="onClickCustomerDelete()" class="dropdown-item has-text-danger">
+              Delete
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
 </div>
 

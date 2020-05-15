@@ -1,0 +1,20 @@
+<div class="centered-content">
+  <div class="modal-box">
+    <h1 class="title">
+      Edit existing Customer
+    </h1>
+
+    <input #customerNameInput class="input has-background-light is-medium" type="text" placeholder="Name">
+    <input #customerPhoneInput class="input has-background-light is-medium" type="number" placeholder="0630-------(-)">
+    <input #customerAddressInput class="input has-background-light is-medium" type="text" placeholder="Address">
+
+    <br><br>
+    <div class="buttons is-right">
+      <button class="button has-text-grey is-medium" routerLink="/customer">Back to Customer List</button>
+      <button class="button has-text-light has-background-grey-light is-medium" (click)="updateCustomer(customerNameInput.value, customerPhoneInput.valueAsNumber, customerAddressInput.value)">Save</button>
+    </div>
+
+
+  </div>
+</div>
+

@@ -15,4 +15,16 @@ export class CustomerService {
   getCustomer() {
     return this.webRequestService.get('customer');
   }
+
+  searchCustomer(id: string) {
+    return this.webRequestService.get(`customer/${id}`);
+  }
+
+  deleteCustomer(id: string){
+    return this.webRequestService.delete(`customer/${id}`);
+  }
+
+  updateCustomer(id: string, name: string, phone: number, address: string){
+    return this.webRequestService.patch(`customer/${id}`, { name, phone, address});
+  }
 }

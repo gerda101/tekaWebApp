@@ -29,15 +29,33 @@
           <th width="30%">Duration (minutes)</th>
           <th>Status</th>
 
-        <tr *ngFor="let media of media">
+        <tr *ngFor="let media of media" [routerLink]="['/media', media._id]">
           <td>{{media.title}}</td>
           <td>{{media.mediaType}}</td>
           <td>{{media.duration}}</td>
           <td>{{media.mediaStatus}}</td>
         </tr>
       </table>
-      </div>
-    </div>
+      </div><br>
 
+      <div class="dropdown is-hoverable is-pulled-right">
+        <div class="dropdown-trigger">
+          <button class="button has-background-grey-lighter" aria-haspopup="true" aria-controls="dropdown-menu4">
+                <span> Modify </span>
+          </button>
+        </div>
+        <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+          <div class="dropdown-content">
+            <a [routerLink]="['/edit-media', medId]" class="dropdown-item">
+              Edit
+            </a>
+            <a (click)="onClickMediaDelete()" class="dropdown-item has-text-danger">
+              Delete
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
 </div>

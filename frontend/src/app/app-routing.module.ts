@@ -7,14 +7,22 @@ import {CustomerViewComponent} from "./pages/customer-view/customer-view.compone
 import {NewCustomerComponent} from "./pages/new-customer/new-customer.component";
 import {RentViewComponent} from "./pages/rent-view/rent-view.component";
 import {NewRentComponent} from "./pages/new-rent/new-rent.component";
+import {EditMediaComponent} from "./pages/edit-media/edit-media.component";
+import {EditCustomerComponent} from "./pages/edit-customer/edit-customer.component";
 
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'media', component: MediaViewComponent},
+  {path: 'media/:mediaId', component: MediaViewComponent},
   {path: 'new-media', component: NewMediaComponent},
+  {path: 'edit-media/:mediaId', component: EditMediaComponent},
+
   {path: 'customer', component: CustomerViewComponent},
+  {path: 'customer/:customerId', component: CustomerViewComponent},
   {path: 'new-customer', component: NewCustomerComponent},
+  {path: 'edit-customer/:customerId', component: EditCustomerComponent},
+
   {path: 'rent', component: RentViewComponent},
   {path: 'new-rent', component: NewRentComponent},
 ];

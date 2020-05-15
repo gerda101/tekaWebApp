@@ -12,6 +12,8 @@ import { CustomerViewComponent } from './pages/customer-view/customer-view.compo
 import { NewCustomerComponent } from './pages/new-customer/new-customer.component';
 import { RentViewComponent } from './pages/rent-view/rent-view.component';
 import { NewRentComponent } from './pages/new-rent/new-rent.component';
+import { EditMediaComponent } from './pages/edit-media/edit-media.component';
+import { EditCustomerComponent } from './pages/edit-customer/edit-customer.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { NewRentComponent } from './pages/new-rent/new-rent.component';
     CustomerViewComponent,
     NewCustomerComponent,
     RentViewComponent,
-    NewRentComponent
+    NewRentComponent,
+    EditMediaComponent,
+    EditCustomerComponent
   ],
   imports: [
     BrowserModule,

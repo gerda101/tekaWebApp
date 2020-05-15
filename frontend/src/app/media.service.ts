@@ -15,4 +15,17 @@ export class MediaService {
   getMedia() {
     return this.webRequestService.get('media');
   }
+
+  searchMedia(id: string) {
+    return this.webRequestService.get(`media/${id}`);
+  }
+
+  deleteMedia(id: string){
+    return this.webRequestService.delete(`media/${id}`);
+  }
+
+  updateMedia(id: string, title: string, mediaType: string, duration: number, mediaStatus='avaliable'){
+    return this.webRequestService.patch(`media/${id}`, { title, mediaType, duration , mediaStatus});
+  }
+
 }
