@@ -30,10 +30,36 @@
           <th width="10%">Due Date</th>
           <th>Status</th>
 
-        </table>
-      </div>
-    </div>
+          <tr *ngFor="let rent of rent" [routerLink]="['/rent', rent._id]">
+            <td>{{rent.customer}}</td>
+            <td>{{rent.media}}</td>
+            <td>{{rent.rentDate}}</td>
+            <td>{{rent.dueDate}}</td>
+            <td>{{rent.status}}</td>
+          </tr>
 
+        </table>
+      </div><br>
+
+      <div class="dropdown is-hoverable is-pulled-right">
+        <div class="dropdown-trigger">
+          <button class="button has-background-grey-lighter" aria-haspopup="true" aria-controls="dropdown-menu4">
+            <span> Modify </span>
+          </button>
+        </div>
+        <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+          <div class="dropdown-content">
+            <a [routerLink]="['/edit-rent', rentId]" class="dropdown-item">
+              Edit
+            </a>
+            <a (click)="onClickRentDelete()" class="dropdown-item has-text-danger">
+              Delete
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
 </div>
 

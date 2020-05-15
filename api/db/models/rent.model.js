@@ -2,14 +2,14 @@ const mongoose = require('mongoose');
 
 const RentSchema = new mongoose.Schema({
     customer: {
-        type: mongoose.Types.ObjectId,
+        type: String,
         required: true,
-        ref: 'Customer'
+        //ref: 'Customer'
     },
     media: {
-        type: mongoose.Types.ObjectId,
+        type: String,
         required: true,
-        ref: 'Media'
+        //ref: 'Media'
     },
     rentDate: {
         type: Date,

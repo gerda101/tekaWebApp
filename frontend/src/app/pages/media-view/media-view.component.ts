@@ -25,7 +25,7 @@ export class MediaViewComponent implements OnInit {
         if (params.mediaId) {
           this.medId = params.mediaId;
         } else {
-          this.media = undefined;
+          this.medId = undefined;
         }
       }
     )

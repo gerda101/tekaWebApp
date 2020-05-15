@@ -122,7 +122,7 @@ app.post('/rent', (req, res) =>{
     let dueDate = req.body.dueDate;
     let status = req.body.status;
 
-    let newCustomer = new Customer({
+    let newRent = new Rent({
         customer,
         media,
         rentDate,

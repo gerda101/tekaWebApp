@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {RentService} from "../../rent.service";
 import {MediaService} from "../../media.service";
 import {CustomerService} from "../../customer.service";
+import {ActivatedRoute, Params, Router} from "@angular/router";
 
 @Component({
   selector: 'app-new-rent',
@@ -12,10 +13,13 @@ export class NewRentComponent implements OnInit {
 
   media: any[];
   customer: any[];
+  medId:string;
+  customerId: string;
+
   d: Date;
   dued: Date;
 
-  constructor(private rentService: RentService, private mediaService: MediaService, private customerService: CustomerService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private rentService: RentService, private mediaService: MediaService, private customerService: CustomerService) { }
 
   ngOnInit(): void {
 
@@ -26,6 +30,13 @@ export class NewRentComponent implements OnInit {
       this.customer=customer;
     })
 
+    this.route.params.subscribe(
+      (params: Params) => {
+        this.medId = params.mediaId;
+        this.customerId = params.customerId;
+      }
+    )
+
     this.d = new Date();
     this.dued = new Date();
     this.dued.setDate(this.dued.getDate()+30);
@@ -34,10 +45,7 @@ export class NewRentComponent implements OnInit {
 
   createRent() {
 
-    var media = this.customerCheckBox();
-    var customer = this.mediaCheckBox();
-
-    this.rentService.createRent(customer, media, this.d.toDateString(), this.dued.toDateString(), status = "ONGOING").subscribe((response: any) => {
+    this.rentService.createRent(this.customerId, this.medId, this.d, this.dued, status = "ONGOING").subscribe((response: any) => {
       console.log(response);
 
       //modify media status => UNAVALIABLE
@@ -45,46 +53,6 @@ export class NewRentComponent implements OnInit {
       window.alert("New rent added!");
       window.location.reload();
     });
-  }
-
-  mediaCheckBox() {
-    var rows = document.getElementById("mediatable")[0].rows;
-    var checked = 0;
-    var media = null;
-
-    for (var i=0; i<=rows; i++) {
-      var checkBox = document.getElementById("mediaCheck") as HTMLInputElement;
-      if (checkBox.checked === true) {
-        checked++;
-        media = checkBox.value;
-      }
-    }
-    if (checked == 1) {
-      return media;
-    } else {
-      window.alert("No, or not 1 media selected!");
-      return media;
-    }
-  }
-
-  customerCheckBox() {
-    var rows = document.getElementById("custable")[0].rows;
-    var checked = 0;
-    var customer = null;
-
-    for (var i=0; i<=rows; i++) {
-      var checkBox = document.getElementById("cusCheck") as HTMLInputElement;
-      if (checkBox.checked === true) {
-        checked++;
-        customer = checkBox.value;
-      }
-    }
-    if (checked == 1) {
-      return customer;
-    } else {
-      window.alert("No, or not 1 media selected!");
-      return customer;
-    }
   }
 
 }

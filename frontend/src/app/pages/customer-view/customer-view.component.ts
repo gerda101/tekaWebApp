@@ -25,7 +25,7 @@ export class CustomerViewComponent implements OnInit {
         if (params.customerId) {
           this.customerId = params.customerId;
         } else {
-          this.customer = undefined;
+          this.customerId = undefined;
         }
       }
     )

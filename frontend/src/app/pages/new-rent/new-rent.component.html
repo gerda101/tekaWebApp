@@ -9,15 +9,11 @@
         <h1 class="subtitle">Customers</h1>
         <div class="newcontenttable" id="custable">
           <table width="100%">
-            <th width="5%"></th>
-            <th width="25%">Name</th>
+            <th width="30%">Name</th>
             <th width="25%">Phone Number</th>
             <th>Address</th>
 
-            <tr *ngFor="let customer of customer">
-              <td class="checkbox">
-                <input type="checkbox" id="cusCheck" value="{{customer.id}}">
-              </td>
+            <tr *ngFor="let customer of customer" [routerLink]="['/new-rent', customer._id]">
               <td>{{customer.name}}</td>
               <td>{{customer.phone}}</td>
               <td>{{customer.address}}</td>
@@ -30,16 +26,12 @@
         <h1 class="subtitle">Media</h1>
         <div class="newcontenttable">
           <table width="100%" id="mediatable">
-            <th width="5%"></th>
-            <th width="35%">Title</th>
+            <th width="40%">Title</th>
             <th width="10%">Type</th>
             <th width="15%">Duration (minutes)</th>
             <th>Status</th>
 
-            <tr *ngFor="let media of media">
-              <td class="checkbox">
-                <input type="checkbox" id="mediaCheck" value="{{media.id}}">
-              </td>
+            <tr *ngFor="let media of media" [routerLink]="['/new-rent/'+ customerId +'/', media._id]">
               <td>{{media.title}}</td>
               <td>{{media.mediaType}}</td>
               <td>{{media.duration}}</td>
