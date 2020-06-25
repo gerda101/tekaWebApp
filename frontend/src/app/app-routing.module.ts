@@ -9,10 +9,14 @@ import {RentViewComponent} from "./pages/rent-view/rent-view.component";
 import {NewRentComponent} from "./pages/new-rent/new-rent.component";
 import {EditMediaComponent} from "./pages/edit-media/edit-media.component";
 import {EditCustomerComponent} from "./pages/edit-customer/edit-customer.component";
+import {LoginComponent} from "./pages/login/login.component";
 
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
+  {path: 'home', component: HomeComponent},
+  {path: '', component: LoginComponent},
+  {path: 'login', component: LoginComponent},
+
   {path: 'media', component: MediaViewComponent},
   {path: 'media/:mediaId', component: MediaViewComponent},
   {path: 'new-media', component: NewMediaComponent},
