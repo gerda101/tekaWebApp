@@ -7,6 +7,8 @@ const {mongoose} = require('./db/mongoose')
 //Mongoose modules load from index.js
 const { Media, Customer, Rent, User} = require('./db/models');
 
+const jwt = require('jsonwebtoken');
+
 //middleware load
 app.use(bodyParser.json());
 
@@ -14,11 +16,30 @@ app.use(bodyParser.json());
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Methods", "GET, POST, PATCH, PUT, DELETE, OPTIONS");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Headers", "*");
+
+    res.header(
+        'Access-Control-Expose-Headers',
+        'x-access-token, y-access-token',
+    );
     next();
 });
 
-// Verify Refresh Token Middleware
+//Middlewares
+
+let authenticate = (req, res, next) => {
+    let token = req.header('x-access-token');
+
+    jwt.verify(token, User.getJWTSecret(), (err, decoded) => {
+        if (err) {
+            res.status(401).send(err);
+        } else {
+            req.user_id = decoded._id;
+            next();
+        }
+    });
+}
+
 let verifySession = (req, res, next) => {
     let refreshToken = req.header('x-refresh-token');
 
@@ -26,7 +47,6 @@ let verifySession = (req, res, next) => {
 
     User.findByIdAndToken(_id, refreshToken).then((user) => {
         if (!user) {
-            // user couldn't be found
             return Promise.reject({
                 'error': 'User not found. Make sure that the refresh token and user id are correct'
             });
@@ -65,14 +85,14 @@ app.listen(3000, () =>{
 
 //Routing
 //Media
-app.get('/media', (req, res) =>{
+app.get('/media', authenticate, (req, res) =>{
     //array return
     Media.find({}).then((media) =>{
         res.send(media);
     })
 });
 
-app.post('/media', (req, res) =>{
+app.post('/media', authenticate, (req, res) =>{
     //new list and return
     let title = req.body.title;
     let mediaType = req.body.mediaType;
@@ -90,7 +110,7 @@ app.post('/media', (req, res) =>{
     })
 });
 
-app.patch('/media/:id', (req, res) =>{
+app.patch('/media/:id', authenticate, (req, res) =>{
     //update and return
     Media.findOneAndUpdate({_id: req.params.id}, {
         $set: req.body
@@ -99,7 +119,7 @@ app.patch('/media/:id', (req, res) =>{
     });
 });
 
-app.delete('/media/:id', (req, res) =>{
+app.delete('/media/:id', authenticate, (req, res) =>{
     //delete and return
     Media.findOneAndRemove({_id: req.params.id}).then((removedMediaDoc) =>{
         res.send(removedMediaDoc);
@@ -107,14 +127,14 @@ app.delete('/media/:id', (req, res) =>{
 });
 
 //Customers
-app.get('/customer', (req, res) =>{
+app.get('/customer', authenticate, (req, res) =>{
     //array return
     Customer.find({}).then((customer) =>{
         res.send(customer);
     })
 });
 
-app.post('/customer', (req, res) =>{
+app.post('/customer', authenticate, (req, res) =>{
     //new list and return
     let name = req.body.name;
     let phone = req.body.phone;
@@ -130,7 +150,7 @@ app.post('/customer', (req, res) =>{
     })
 });
 
-app.patch('/customer/:id', (req, res) =>{
+app.patch('/customer/:id', authenticate, (req, res) =>{
     //update and return
     Customer.findOneAndUpdate({_id: req.params.id}, {
         $set: req.body
@@ -139,7 +159,7 @@ app.patch('/customer/:id', (req, res) =>{
     });
 });
 
-app.delete('/customer/:id', (req, res) =>{
+app.delete('/customer/:id', authenticate, (req, res) =>{
     //delete and return
     Customer.findOneAndRemove({_id: req.params.id}).then((removedCustomerDoc) =>{
         res.send(removedCustomerDoc);
@@ -147,14 +167,14 @@ app.delete('/customer/:id', (req, res) =>{
 });
 
 //Rents
-app.get('/rent', (req, res) =>{
+app.get('/rent', authenticate, (req, res) =>{
     //array return
     Rent.find({}).then((rent) =>{
         res.send(rent);
     })
 });
 
-app.post('/rent', (req, res) =>{
+app.post('/rent', authenticate, (req, res) =>{
     //new list and return
     let customer = req.body.customer;
     let media = req.body.media;
@@ -174,7 +194,7 @@ app.post('/rent', (req, res) =>{
     })
 });
 
-app.patch('/rent/:id', (req, res) =>{
+app.patch('/rent/:id', authenticate, (req, res) =>{
     //update and return
     Rent.findOneAndUpdate({_id: req.params.id}, {
         $set: req.body
@@ -183,7 +203,7 @@ app.patch('/rent/:id', (req, res) =>{
     });
 });
 
-app.delete('/rent/:id', (req, res) =>{
+app.delete('/rent/:id', authenticate, (req, res) =>{
     //delete and return
     Rent.findOneAndRemove({_id: req.params.id}).then((removedRentDoc) =>{
         res.send(removedRentDoc);
@@ -232,7 +252,6 @@ app.post('/users/login', (req, res) =>{
 });
 
 app.get('/users/me/access-token', verifySession, (req, res) => {
-    // we know that the user/caller is authenticated and we have the user_id and user object available to us
     req.userObject.generateAccessAuthToken().then((accessToken) => {
         res.header('x-access-token', accessToken).send({ accessToken });
     }).catch((e) => {
