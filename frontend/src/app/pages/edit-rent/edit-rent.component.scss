@@ -1,0 +1,52 @@
+@import "../../../main-styles.scss";
+
+.subtitle{
+  font-family: 'Bayon';
+  font-size: large;
+  letter-spacing: 1px;
+  color: steelblue;
+  padding-left: 30px;
+}
+
+.leftside {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  padding: 20px;
+  border-bottom-left-radius: 15px;
+  border-top-left-radius: 15px;
+}
+
+.newlist-container{
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 20px;
+  border-bottom-right-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.newcontenttable{
+  display: flex;
+  background: aliceblue;
+  color: dimgrey;
+  overflow-y: scroll;
+  border-collapse: collapse;
+}
+
+.newcontainer {
+  height: 80%;
+  width: 80%;
+  border-radius: 15px;
+  padding: 20px;
+  overflow-y: scroll;
+}
+
+.smallcontainer {
+  display: flex;
+  flex-direction: row;
+  overflow-y: visible;
+  height: 70%;
+  width: 100%;
+  border-radius: 15px;
+}

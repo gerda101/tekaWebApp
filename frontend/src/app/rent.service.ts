@@ -21,4 +21,8 @@ export class RentService {
   deleteRent(id: string){
     return this.webRequestService.delete(`rent/${id}`);
   }
+
+  updateRent(id: string, customer: string, media: string){
+    return this.webRequestService.patch(`rent/${id}`, { customer, media});
+  }
 }
