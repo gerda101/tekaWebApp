@@ -22,8 +22,8 @@ export class RentViewComponent implements OnInit {
 
     this.route.params.subscribe(
       (params: Params) => {
-        if (params.mediaId) {
-          this.rentId = params.mediaId;
+        if (params.rentId) {
+          this.rentId = params.rentId;
         } else {
           this.rentId = undefined;
         }
