@@ -24,7 +24,7 @@ export class MediaService {
     return this.webRequestService.delete(`media/${id}`);
   }
 
-  updateMedia(id: string, title: string, mediaType: string, duration: number, mediaStatus='avaliable'){
+  updateMedia(id: string, title: string, mediaType: string, duration: number, mediaStatus: string){
     return this.webRequestService.patch(`media/${id}`, { title, mediaType, duration , mediaStatus});
   }
 

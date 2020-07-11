@@ -11,6 +11,7 @@ export class EditMediaComponent implements OnInit {
 
   medId: string;
   media: any[];
+  mediaStatus: string;
 
   constructor(private route: ActivatedRoute, private router: Router, private mediaService: MediaService) { }
 
@@ -25,12 +26,15 @@ export class EditMediaComponent implements OnInit {
     this.mediaService.searchMedia(this.medId).subscribe((media: any[]) =>{
       this.media=media;
     })
+    this.mediaService.searchMedia(this.medId).subscribe((mediaStatus: string) =>{
+      this.mediaStatus=mediaStatus;
+    })
 
   }
 
   updateMedia(title: string, mediaType: string, duration: number){
     if (mediaType === "DVD" || mediaType ==="VHS") {
-      this.mediaService.updateMedia(this.medId, title, mediaType, duration).subscribe(() =>{
+      this.mediaService.updateMedia(this.medId, title, mediaType, duration, this.mediaStatus).subscribe(() =>{
         window.alert("Media edited!");
       });
     } else {

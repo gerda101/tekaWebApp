@@ -10,7 +10,6 @@ import {NewRentComponent} from "./pages/new-rent/new-rent.component";
 import {EditMediaComponent} from "./pages/edit-media/edit-media.component";
 import {EditCustomerComponent} from "./pages/edit-customer/edit-customer.component";
 import {LoginComponent} from "./pages/login/login.component";
-import {EditRentComponent} from "./pages/edit-rent/edit-rent.component";
 
 
 const routes: Routes = [
@@ -33,9 +32,6 @@ const routes: Routes = [
   {path: 'new-rent', component: NewRentComponent},
   {path: 'new-rent/:customerId', component: NewRentComponent},
   {path: 'new-rent/:customerId/:mediaId', component: NewRentComponent},
-  {path: 'edit-rent/:rentId', component: EditRentComponent},
-  {path: 'edit-rent/:customerId', component: EditRentComponent},
-  {path: 'edit-rent/:customerId/:mediaId', component: EditRentComponent},
 ];
 
 @NgModule({
