@@ -22,7 +22,6 @@ export class WebReqInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
         console.log(error);
-
         if (error.status === 401) {
           return this.refreshAccessToken()
             .pipe(
@@ -37,7 +36,6 @@ export class WebReqInterceptor implements HttpInterceptor {
               })
             )
         }
-
         return throwError(error);
       })
     )
@@ -61,16 +59,13 @@ export class WebReqInterceptor implements HttpInterceptor {
         })
       )
     }
-
   }
-
 
   addAuthHeader(request: HttpRequest<any>) {
     const token = this.authService.getAccessToken();
 
     if (token) {
-      return request.clone({
-        setHeaders: {
+      return request.clone({ setHeaders: {
           'x-access-token': token
         }
       })

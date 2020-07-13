@@ -28,11 +28,7 @@ export class MediaViewComponent implements OnInit {
 
     this.route.params.subscribe(
       (params: Params) => {
-        if (params.mediaId) {
-          this.medId = params.mediaId;
-        } else {
-          this.medId = undefined;
-        }
+        this.medId = params.mediaId;
       }
     )
   }

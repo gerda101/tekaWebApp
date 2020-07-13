@@ -16,6 +16,7 @@ import { EditMediaComponent } from './pages/edit-media/edit-media.component';
 import { EditCustomerComponent } from './pages/edit-customer/edit-customer.component';
 import { LoginComponent } from './pages/login/login.component';
 import {WebReqInterceptor} from "./web-req-interceptor.service";
+import { SignupComponent } from './pages/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import {WebReqInterceptor} from "./web-req-interceptor.service";
     EditMediaComponent,
     EditCustomerComponent,
     LoginComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,

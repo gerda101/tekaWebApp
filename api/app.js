@@ -6,7 +6,6 @@ const {mongoose} = require('./db/mongoose')
 
 //Mongoose modules load from index.js
 const { Media, Customer, Rent, User} = require('./db/models');
-
 const jwt = require('jsonwebtoken');
 
 //middleware load
@@ -20,7 +19,7 @@ app.use(function(req, res, next) {
 
     res.header(
         'Access-Control-Expose-Headers',
-        'x-access-token, y-access-token',
+        'x-access-token, x-refresh-token',
     );
     next();
 });
