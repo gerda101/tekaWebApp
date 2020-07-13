@@ -12,12 +12,18 @@ export class MediaViewComponent implements OnInit {
   media: any[];
   medId: string;
 
+  title: string[];
+
   constructor(private mediaService: MediaService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
 
     this.mediaService.getMedia().subscribe((media: any[]) =>{
       this.media=media;
+    })
+
+    this.mediaService.getMedia().subscribe((title: string[]) =>{
+      this.title=title;
     })
 
     this.route.params.subscribe(

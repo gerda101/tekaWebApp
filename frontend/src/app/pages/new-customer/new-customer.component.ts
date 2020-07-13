@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CustomerService} from "../../customer.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-new-customer',
@@ -8,7 +9,7 @@ import {CustomerService} from "../../customer.service";
 })
 export class NewCustomerComponent implements OnInit {
 
-  constructor(private customerService: CustomerService) { }
+  constructor(private customerService: CustomerService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -18,7 +19,7 @@ export class NewCustomerComponent implements OnInit {
       this.customerService.createCustomer(name, phone, address).subscribe((response: any) =>{
         console.log(response);
         window.alert("New customer added!");
-        window.location.reload();
+        this.router.navigate(['/customer']);
       });
     } else {
       window.alert("Invalid phone number length!");

@@ -31,7 +31,7 @@ const routes: Routes = [
   {path: 'rent/:rentId/:mediaId', component: RentViewComponent},
   {path: 'new-rent', component: NewRentComponent},
   {path: 'new-rent/:customerId', component: NewRentComponent},
-  {path: 'new-rent/:customerId/:mediaId', component: NewRentComponent},
+  {path: 'new-rent/:customerId/:mediaId/:mediaStatus', component: NewRentComponent},
 ];
 
 @NgModule({

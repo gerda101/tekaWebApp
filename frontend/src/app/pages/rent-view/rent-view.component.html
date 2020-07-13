@@ -30,7 +30,7 @@
           <th width="10%">Due Date</th>
           <th>Status</th>
 
-          <tr *ngFor="let rent of rent" [routerLink]="['/rent', rent._id, rent.media]">
+          <tr *ngFor="let rent of rent" [routerLink]="['/rent', rent._id, rent.media]" [ngClass]="{'overdue' : rent.status==='OVERDUE'}">
             <td>{{rent.customer}}</td>
             <td>{{rent.media}}</td>
             <td>{{rent.rentDate}}</td>

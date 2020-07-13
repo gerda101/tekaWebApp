@@ -18,10 +18,6 @@ export class RentService {
     return this.webRequestService.get('rent');
   }
 
-  searchRent(id: string) {
-    return this.webRequestService.get(`rent/${id}`);
-  }
-
   deleteRent(id: string){
     return this.webRequestService.delete(`rent/${id}`);
   }

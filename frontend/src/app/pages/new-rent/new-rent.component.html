@@ -31,7 +31,7 @@
             <th width="15%">Duration (minutes)</th>
             <th>Status</th>
 
-            <tr *ngFor="let media of media" [routerLink]="['/new-rent/'+ customerId +'/', media._id]">
+            <tr *ngFor="let media of media" [routerLink]="['/new-rent/'+ customerId +'/', media._id, media.mediaStatus]">
               <td>{{media.title}}</td>
               <td>{{media.mediaType}}</td>
               <td>{{media.duration}}</td>

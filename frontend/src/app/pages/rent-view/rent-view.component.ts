@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import {RentService} from "../../rent.service";
 import {MediaService} from "../../media.service";
 import {ActivatedRoute, Params, Router} from "@angular/router";
@@ -39,6 +39,15 @@ export class RentViewComponent implements OnInit {
       }
     )
   }
+
+  /*loadMediaTitles(id: string){
+    if (id != undefined) {
+      this.mediaService.searchMedia(id).subscribe((res: any) => {
+          console.log(res, res.title);
+          return res.title;
+      })
+    }
+  }*/
 
   onClickRentDelete(){
     if (this.rentId != undefined) {

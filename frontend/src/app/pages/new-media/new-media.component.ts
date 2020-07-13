@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MediaService} from "../../media.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-new-media',
@@ -8,7 +9,7 @@ import {MediaService} from "../../media.service";
 })
 export class NewMediaComponent implements OnInit {
 
-  constructor(private mediaService: MediaService) { }
+  constructor(private mediaService: MediaService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -18,7 +19,7 @@ export class NewMediaComponent implements OnInit {
       this.mediaService.createMedia(title, mediaType, duration, "AVALIABLE").subscribe((response: any) =>{
         console.log(response);
         window.alert("New media added!");
-        window.location.reload();
+        this.router.navigate(['/media']);
       });
     } else {
       window.alert("Invalid media type!");
