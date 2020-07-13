@@ -28,4 +28,8 @@ export class MediaService {
     return this.webRequestService.patch(`media/${id}`, { title, mediaType, duration , mediaStatus});
   }
 
+  updateMediaStatus(id: string, mediaStatus: string){
+    return this.webRequestService.patch(`media/${id}`, {mediaStatus});
+  }
+
 }

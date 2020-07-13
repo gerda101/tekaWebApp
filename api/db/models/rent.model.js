@@ -4,12 +4,10 @@ const RentSchema = new mongoose.Schema({
     customer: {
         type: String,
         required: true,
-        //ref: 'Customer'
     },
     media: {
         type: String,
         required: true,
-        //ref: 'Media'
     },
     rentDate: {
         type: Date,
@@ -21,7 +19,6 @@ const RentSchema = new mongoose.Schema({
     },
     status: {
         type: String,
-        //enum: ['ongoing', 'overdue', 'returned'],
         required: true
     },
 })

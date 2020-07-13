@@ -13,9 +13,6 @@ export class NewRentComponent implements OnInit {
 
   media: any[];
   medId:string;
-  title: string;
-  mediaType: string;
-  duration: number;
 
   customer: any[];
   customerId: string;
@@ -29,15 +26,6 @@ export class NewRentComponent implements OnInit {
 
     this.mediaService.getMedia().subscribe((media: any[]) =>{
       this.media=media;
-    })
-    this.mediaService.getMedia().subscribe((title: string) =>{
-      this.title=title;
-    })
-    this.mediaService.getMedia().subscribe((mediaType: string) =>{
-      this.mediaType=mediaType;
-    })
-    this.mediaService.getMedia().subscribe((duration: number) =>{
-      this.duration=duration;
     })
 
     this.customerService.getCustomer().subscribe((customer: any[]) =>{
@@ -60,17 +48,14 @@ export class NewRentComponent implements OnInit {
   createRent() {
     this.rentService.createRent(this.customerId, this.medId, this.d, this.dued, status = "ONGOING").subscribe((response: any) => {
       console.log(response);
-
-      //modify media status => UNAVALIABLE
-      console.log(this.media, this.mediaType, this.duration);
-
-      this.mediaService.updateMedia(this.medId, this.title, this.mediaType, this.duration, 'UNAVALIABLE').subscribe((response: any) =>{
-        console.log(response, "Media status set to unavaliable!");
-      });
-
-      window.alert("New rent added!");
-      window.location.reload();
     });
+
+    this.mediaService.updateMediaStatus(this.medId, 'UNAVALIABLE').subscribe((response: any) =>{
+      console.log(response, "Media status set to unavaliable!");
+    });
+
+    window.alert("New rent added!");
+    this.router.navigate(['/rent']);
   }
 
 }

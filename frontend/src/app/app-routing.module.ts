@@ -28,7 +28,7 @@ const routes: Routes = [
   {path: 'edit-customer/:customerId', component: EditCustomerComponent},
 
   {path: 'rent', component: RentViewComponent},
-  {path: 'rent/:rentId', component: RentViewComponent},
+  {path: 'rent/:rentId/:mediaId', component: RentViewComponent},
   {path: 'new-rent', component: NewRentComponent},
   {path: 'new-rent/:customerId', component: NewRentComponent},
   {path: 'new-rent/:customerId/:mediaId', component: NewRentComponent},
